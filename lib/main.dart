@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                   },
 
                   
-                  child: RaisedButton(child: Text("Left"), onPressed: null),
+                  child: RaisedButton(child: Text("up"), onPressed: null),
             ),
             SizedBox(height: 20),
 
