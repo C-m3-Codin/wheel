@@ -27,6 +27,7 @@ dependencies:
   cupertino_icons: ^0.1.3
   http: ^0.12.1
   wifi: ^0.1.5
+  sensors: ^0.4.2+2
   
 
 dev_dependencies:
