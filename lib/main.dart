@@ -12,207 +12,151 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
-  dynamic posques() async* {
-    print("right");
-    var url = '192.168.43.90:3000';
-    var response =
-        await http.post(url, body: {'name': 'doodle', 'color': 'blue'});
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
-  }
+  bool _checked = false;
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
+        home: DefaultTabController(
+      length: 3,
+      child: Scaffold(
         appBar: AppBar(
-          title: Text("Wheels"),
-          //actions: <Widget>[],
-        ),
-        body: Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            SizedBox(height: 20),
-            SizedBox(height: 20),
-            GestureDetector(
- onTapDown: (TapDownDetails details) async {
-                    print("up on");
-
-                    String url = 'http://192.168.43.191:80/';
-                    Map<String, String> headers = {
-                      "Content-type": "application/json"
-                    };
-                    String json = '{"dir":"up"}'; // make POST request
-                    Response response = await post(url,
-                        headers: headers,
-                        body: json); // check the status code for the result
-                    int statusCode = response.statusCode;
-                    print("\n\n\n0 status code is ");
-                    print(statusCode);
-                  },
-
-
-                  onTapUp: (TapUpDetails details) async {
-                    print("up off");
-
-                    String url = 'http://192.168.43.191:80/';
-                    Map<String, String> headers = {
-                      "Content-type": "application/json"
-                    };
-                    String json =
-                        '{"dir":"stop"}'; // make POST request
-                    Response response = await post(url,
-                        headers: headers,
-                        body: json); // check the status code for the result
-                    int statusCode = response.statusCode;
-                    print("\n\n\n0 status code is ");
-                    print(statusCode);
-                  },
-
-                  
-                  child: RaisedButton(child: Text("up"), onPressed: null),
-            ),
-            SizedBox(height: 20),
-
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                GestureDetector(
-                  onTapDown: (TapDownDetails details) async {
-                    print("right on");
-
-                    String url = 'http://192.168.43.191:80/';
-                    Map<String, String> headers = {
-                      "Content-type": "application/json"
-                    };
-                    String json = '{"dir":"left"}'; // make POST request
-                    Response response = await post(url,
-                        headers: headers,
-                        body: json); // check the status code for the result
-                    int statusCode = response.statusCode;
-                    print("\n\n\n0 status code is ");
-                    print(statusCode);
-                  },
-
-
-                  onTapUp: (TapUpDetails details) async {
-                    print("right off");
-
-                    String url = 'http://192.168.43.191:80/';
-                    Map<String, String> headers = {
-                      "Content-type": "application/json"
-                    };
-                    String json =
-                        '{"dir":"stop"}'; // make POST request
-                    Response response = await post(url,
-                        headers: headers,
-                        body: json); // check the status code for the result
-                    int statusCode = response.statusCode;
-                    print("\n\n\n0 status code is ");
-                    print(statusCode);
-                  },
-
-                  
-                  child: RaisedButton(child: Text("Left"), onPressed: null),
-                ),
-                SizedBox(),
-                GestureDetector(
-
-
-                  onTapDown: (TapDownDetails details) async {
-                    print("right on");
-
-                    String url = 'http://192.168.43.191:80/';
-                    Map<String, String> headers = {
-                      "Content-type": "application/json"
-                    };
-                    String json = '{"dir":"right"}'; // make POST request
-                    Response response = await post(url,
-                        headers: headers,
-                        body: json); // check the status code for the result
-                    int statusCode = response.statusCode;
-                    print("\n\n\n0 status code is ");
-                    print(statusCode);
-                  },
-
-
-                  onTapUp: (TapUpDetails details) async {
-                    print("right off");
-
-                    String url = 'http://192.168.43.191:80/';
-                    Map<String, String> headers = {
-                      "Content-type": "application/json"
-                    };
-                    String json =
-                        '{"dir":"stop"}'; // make POST request
-                    Response response = await post(url,
-                        headers: headers,
-                        body: json); // check the status code for the result
-                    int statusCode = response.statusCode;
-                    print("\n\n\n0 status code is ");
-                    print(statusCode);
-                  },
-
-                  
-                  child: RaisedButton(child: Text("Right"), onPressed: null),
-                )
+            title: Text("Wheels"),
+            bottom: TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.directions_car)),
+                Tab(icon: Icon(Icons.directions_transit)),
+                Tab(icon: Icon(Icons.directions_bike)),
               ],
+            )
+            //actions: <Widget>[],
             ),
-
-
-
-            SizedBox(height: 20),
-
-
-
-            GestureDetector(
-
-
-
-              onTapDown: (TapDownDetails details)  async {
-                    print("Down");
-
-                    String url = 'http://192.168.43.191:80/';
-                    Map<String, String> headers = {
-                      "Content-type": "application/json"
-                    };
-                    String json = '{"dir":"down"}'; // make POST request
-                    Response response = await post(url,
-                        headers: headers,
-                        body: json); // check the status code for the result
-                    int statusCode = response.statusCode;
-                    print("\n\n\n0 status code is ");
-                    print(statusCode);
-                  },
-
-
-              onTapUp: (TapUpDetails details)  async {
-                    print("Down");
-
-                    String url = 'http://192.168.43.191:80/';
-                    Map<String, String> headers = {
-                      "Content-type": "application/json"
-                    };
-                    String json = '{"dir":"stop"}'; // make POST request
-                    Response response = await post(url,
-                        headers: headers,
-                        body: json); // check the status code for the result
-                    int statusCode = response.statusCode;
-                    print("\n\n\n0 status code is ");
-                    print(statusCode);
-                  },
-
-
-
-              child: RaisedButton(
-                child: Text("Down"),
-                onPressed: null,
-              ),
-            ),
+        body: TabBarView(
+          children: [
+            BasicControl(checked: _checked),
+            Icon(Icons.directions_transit),
+            Icon(Icons.directions_bike),
           ],
         ),
       ),
+    ));
+  }
+}
+
+class BasicControl extends StatelessWidget {
+  const BasicControl({
+    Key key,
+    @required bool checked,
+  })  : _checked = checked,
+        super(key: key);
+
+  final bool _checked;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      //mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        SizedBox(height: 20),
+        SizedBox(height: 20),
+        GestureDetector(
+          onTapDown: (TapDownDetails details) async {
+            print("up on");
+            Response response = await get('http://192.168.4.1:8080/?State=F');
+
+            print(response.statusCode);
+            print("up going");
+          },
+          onTapUp: (TapUpDetails details) async {
+            if (_checked == false) {
+              print("stop go");
+              Response response = await get('http://192.168.4.1:8080/?State=S');
+
+              print(response.statusCode);
+              print("stopped");
+            } else {}
+          },
+          child: RaisedButton(child: Text("up"), onPressed: null),
+        ),
+        SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            GestureDetector(
+              onTapDown: (TapDownDetails details) async {
+                print("Left on");
+                Response response =
+                    await get('http://192.168.4.1:8080/?State=L');
+
+                print(response.statusCode);
+                print("Left going");
+              },
+              onTapUp: (TapUpDetails details) async {
+                print("stop go");
+                Response response =
+                    await get('http://192.168.4.1:8080/?State=S');
+
+                print(response.statusCode);
+                print("stopped");
+              },
+              child: RaisedButton(child: Text("Left"), onPressed: null),
+            ),
+            SizedBox(),
+            GestureDetector(
+              onTapDown: (TapDownDetails details) async {
+                print("Right on");
+                Response response =
+                    await get('http://192.168.4.1:8080/?State=R');
+
+                print(response.statusCode);
+                print("Right going");
+              },
+              onTapUp: (TapUpDetails details) async {
+                print("stop go");
+                Response response =
+                    await get('http://192.168.4.1:8080/?State=S');
+
+                print(response.statusCode);
+                print("stopped");
+              },
+              child: RaisedButton(child: Text("Right"), onPressed: null),
+            )
+          ],
+        ),
+        SizedBox(height: 20),
+        GestureDetector(
+          onTapDown: (TapDownDetails details) async {
+            print("back on");
+            Response response = await get('http://192.168.4.1:8080/?State=B');
+
+            print(response.statusCode);
+            print("backing ");
+          },
+          onTapUp: (TapUpDetails details) async {
+            print("back stop");
+            Response response = await get('http://192.168.4.1:8080/?State=S');
+
+            print(response.statusCode);
+            print("back stopped");
+          },
+          child: RaisedButton(
+            child: Text("Down"),
+            onPressed: null,
+          ),
+        ),
+        // CheckboxListTile(
+        //     title: Text("Keep pressed"),
+        //     //onChanged: null,
+
+        //     value: _checked,
+        //     onChanged: (bool value) {
+        //       setState(() {
+        //         _checked = !(_checked);
+        //         print(_checked);
+        //         //_checked=value;
+        //       });
+        //     })
+      ],
     );
   }
 }
